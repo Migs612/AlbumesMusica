@@ -132,7 +132,7 @@ function ajustarCantidad(delta) {
     input.value = val;
 }
 
-// Close modal when clicking outside
+
 document.getElementById('modal-cantidad').addEventListener('click', function(e) {
     if (e.target === this) {
         cerrarModalCantidad();

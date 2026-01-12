@@ -13,12 +13,12 @@
     
     <style>
         body {
-            font-family: 'Inter', sans-serif; /* Fallback */
+            font-family: 'Inter', sans-serif;
         }
         h1, h2, h3, h4, .font-unbounded {
             font-family: 'Unbounded', sans-serif;
         }
-        /* Glassmorphism Utilities */
+        
         .glass {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -40,7 +40,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Custom Scrollbar */
+        
         ::-webkit-scrollbar {
             width: 8px;
         }

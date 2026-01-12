@@ -25,7 +25,7 @@
         <div class="bg-black/20 rounded-lg overflow-hidden">
             <?php foreach($productos_ticket as $prod): ?>
                 <div class="flex items-center p-4 border-b border-white/5 last:border-0">
-                    <img loading="lazy" src="<?php echo $prod['imagen']; ?>" alt="<?php echo $prod['titulo']; ?>" class="w-16 h-16 object-cover rounded shadow-md mr-4">
+                    <img src="<?php echo $prod['imagen']; ?>" alt="<?php echo $prod['titulo']; ?>" class="w-16 h-16 object-cover rounded shadow-md mr-4">
                     <div class="flex-1">
                         <h3 class="text-white font-medium"><?php echo $prod['titulo']; ?></h3>
                         <p class="text-gray-400 text-sm"><?php echo $prod['artista']; ?></p>

@@ -5,23 +5,21 @@ use PDO;
 use PDOException;
 
 class BaseDeDatos {
-    private $host = 'localhost';
-    private $nombre_bd = 'tienda';
-    private $usuario = 'root';
-    private $contrasena = '';
+    private $host = 'srv1687.hstgr.io';
+    private $nombre_bd = 'u336643015_LavenderTunes';
+    private $usuario = 'u336643015_LavenderAdmin';
+    private $contrasena = '8DbboJZT7W628z';
     public $conexion;
 
     public function obtenerConexion() {
-        $this->conexion = null;
-
         try {
-            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->nombre_bd . ";charset=utf8mb4";
-            $this->conexion = new PDO($dsn, $this->usuario, $this->contrasena);
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $excepcion) {
-            echo "Error de conexión: " . $excepcion->getMessage();
+            $dsn = "mysql:host={$this->host};dbname={$this->nombre_bd};charset=utf8mb4";
+            $this->conexion = new PDO($dsn, $this->usuario, $this->contrasena, [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            ]);
+            return $this->conexion;
+        } catch (PDOException $e) {
+            die("Error de conexión: " . $e->getMessage());
         }
-
-        return $this->conexion;
     }
 }

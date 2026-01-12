@@ -55,6 +55,6 @@ class ControladorFavorito {
         $modeloFavorito = new Favorito();
         $favoritos = $modeloFavorito->obtenerPorUsuario($id_usuario);
 
-        require_once '../app/views/favoritos.php';
+        require_once 'app/views/favoritos.php';
     }
 }

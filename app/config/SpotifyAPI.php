@@ -50,7 +50,6 @@ class SpotifyAPI
 
     private function hacerPeticion($endpoint, $params = [])
     {
-        // Verificar token
         if (!$this->token_acceso)
             $this->autenticar();
 
@@ -69,9 +68,7 @@ class SpotifyAPI
         $resultado = curl_exec($ch);
         curl_close($ch);
 
-        $data = json_decode($resultado, true);
-        
-        return $data;
+        return json_decode($resultado, true);
     }
 
     public function obtenerNuevosLanzamientos($limite = 20)

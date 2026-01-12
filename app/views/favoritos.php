@@ -22,7 +22,7 @@
                 
                 <div class="aspect-square relative overflow-hidden">
                     <?php if($prod['imagen_url']): ?>
-                        <img loading="lazy" src="<?php echo $prod['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="<?php echo $prod['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <?php else: ?>
                         <div class="w-full h-full bg-gray-800 flex items-center justify-center">
                             <i class="ri-music-fill text-4xl text-gray-600"></i>
@@ -120,13 +120,12 @@ function toggleFavorito(e, id) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Si estamos en la página de favoritos, recargamos para quitar el elemento
             window.location.reload();
         }
     });
 }
 
-// Funciones del carrito (copiadas de home/catalogo)
+
 function confirmarAgregarCarrito(e, id, titulo, precio) {
     e.preventDefault();
     e.stopPropagation();

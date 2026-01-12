@@ -6,7 +6,7 @@
     <div class="w-full md:w-1/3 lg:w-1/4 flex-shrink-0">
         <div class="aspect-square rounded-xl overflow-hidden shadow-2xl border border-white/10 relative group">
             <?php if ($producto['imagen_url']): ?>
-                <img loading="lazy" src="<?php echo $producto['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover">
+                <img src="<?php echo $producto['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover">
             <?php else: ?>
                 <div class="w-full h-full bg-gray-800 flex items-center justify-center">
                     <i class="ri-disc-line text-6xl text-gray-600"></i>
@@ -145,7 +145,7 @@ function toggleFavorito(e, id) {
                             class="flex items-center gap-3 group hover:bg-white/5 p-2 rounded-lg transition-colors">
                             <div class="w-16 h-16 rounded overflow-hidden flex-shrink-0">
                                 <?php if ($sim['imagen_url']): ?>
-                                    <img loading="lazy" src="<?php echo $sim['imagen_url']; ?>"
+                                    <img src="<?php echo $sim['imagen_url']; ?>"
                                         class="w-full h-full object-cover group-hover:scale-110 transition-transform">
                                 <?php else: ?>
                                     <div class="w-full h-full bg-gray-800 flex items-center justify-center"><i

@@ -94,7 +94,7 @@
                         
                         <div class="aspect-square relative overflow-hidden">
                             <?php if($prod['imagen_url']): ?>
-                                <img loading="lazy" src="<?php echo $prod['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <img src="<?php echo $prod['imagen_url']; ?>" alt="Portada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <?php else: ?>
                                 <div class="w-full h-full bg-gray-800 flex items-center justify-center">
                                     <i class="ri-music-fill text-4xl text-gray-600"></i>
@@ -185,7 +185,7 @@ function confirmarAgregarCarrito(e, id, titulo, precio) {
     const content = document.getElementById('modal-content');
     
     modal.classList.remove('hidden');
-    // Small delay to allow display:block to apply before opacity transition
+    
     setTimeout(() => {
         modal.classList.remove('opacity-0');
         content.classList.remove('scale-95');
@@ -206,7 +206,7 @@ function cerrarModal() {
     }, 300);
 }
 
-// Manejar el envío del formulario con AJAX
+
 document.getElementById('form-agregar-carrito').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -225,7 +225,7 @@ document.getElementById('form-agregar-carrito').addEventListener('submit', funct
     })
     .catch(error => {
         console.error('Error:', error);
-        // Fallback en caso de error
+        
         this.submit();
     });
 });
@@ -241,7 +241,7 @@ function mostrarExito() {
         content.classList.remove('opacity-0');
     }, 10);
     
-    // Ocultar automáticamente después de 3 segundos
+    
     setTimeout(() => {
         content.classList.add('-translate-y-full');
         content.classList.add('opacity-0');
@@ -251,7 +251,7 @@ function mostrarExito() {
     }, 3000);
 }
 
-// Close modal when clicking outside
+
 document.getElementById('modal-carrito').addEventListener('click', function(e) {
     if (e.target === this) {
         cerrarModal();

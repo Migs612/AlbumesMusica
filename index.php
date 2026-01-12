@@ -5,7 +5,7 @@ session_start();
 spl_autoload_register(function ($clase) {
     
     $prefijo = 'App\\';
-    $base_dir = __DIR__ . '/../app/';
+    $base_dir = __DIR__ . '/app/';
 
     $longitud = strlen($prefijo);
     if (strncmp($prefijo, $clase, $longitud) !== 0) {
@@ -13,7 +13,12 @@ spl_autoload_register(function ($clase) {
     }
 
     $clase_relativa = substr($clase, $longitud);
-    $archivo = $base_dir . str_replace('\\', '/', $clase_relativa) . '.php';
+
+    $partes = explode('\\', $clase_relativa);
+    $nombre_archivo = array_pop($partes);
+    $directorios = array_map('strtolower', $partes);
+    
+    $archivo = $base_dir . implode('/', $directorios) . '/' . $nombre_archivo . '.php';
 
     if (file_exists($archivo)) {
         require $archivo;

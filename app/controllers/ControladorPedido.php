@@ -83,7 +83,7 @@ class ControladorPedido {
         foreach ($carrito as $item) {
             $total += $item['precio'] * $item['cantidad'];
         }
-        require_once '../app/views/carrito.php';
+        require_once 'app/views/carrito.php';
     }
 
     public function procesarPedido() {
@@ -175,7 +175,7 @@ class ControladorPedido {
         }
         $modelo = new Pedido();
         $pedidos = $modelo->obtenerPorUsuario($_SESSION['usuario_id']);
-        require_once '../app/views/historial.php';
+        require_once 'app/views/historial.php';
     }
 
     public function generarTicketHTML() {
@@ -197,6 +197,6 @@ class ControladorPedido {
             ];
         }
         
-        require_once '../app/views/ticket.php';
+        require_once 'app/views/ticket.php';
     }
 }

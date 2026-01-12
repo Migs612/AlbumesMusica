@@ -20,10 +20,10 @@ class ControladorAutenticacion {
                 exit;
             } else {
                 $error = "Credenciales incorrectas";
-                require_once '../app/views/login.php';
+                require_once 'app/views/login.php';
             }
         } else {
-            require_once '../app/views/login.php';
+            require_once 'app/views/login.php';
         }
     }
 
@@ -39,10 +39,10 @@ class ControladorAutenticacion {
                 exit;
             } else {
                 $error = "Error al registrar";
-                require_once '../app/views/registro.php';
+                require_once 'app/views/registro.php';
             }
         } else {
-            require_once '../app/views/registro.php';
+            require_once 'app/views/registro.php';
         }
     }
 

@@ -70,7 +70,7 @@ class ControladorCatalogo
             $productos_destacados = array_slice($modelo->obtenerTodos(), 0, 4);
         }
 
-        require_once '../app/views/home.php';
+        require_once 'app/views/home.php';
     }
 
     public function catalogo()
@@ -166,7 +166,7 @@ class ControladorCatalogo
             $productos = $modelo->obtenerTodos();
         }
 
-        require_once '../app/views/catalogo.php';
+        require_once 'app/views/catalogo.php';
     }
 
     public function detalle()
@@ -319,6 +319,6 @@ class ControladorCatalogo
             $es_favorito = $modeloFavorito->esFavorito($_SESSION['usuario_id'], $producto['id_producto']);
         }
 
-        require_once '../app/views/detalle.php';
+        require_once 'app/views/detalle.php';
     }
 }

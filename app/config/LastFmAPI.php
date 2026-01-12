@@ -12,8 +12,19 @@ class LastFmAPI {
         }
     }
 
-    private function hacerPeticion($params) {
+    public function obtenerAlbumesSimilares($artista, $album, $limit = 5) {
+        $params = [
+            'method' => 'album.getsimilar',
+            'artist' => $artista,
+            'album' => $album,
+            'api_key' => $this->api_key,
+            'format' => 'json',
+            'limit' => $limit,
+            'autocorrect' => 1
+        ];
+        
         $url = $this->base_url . '?' . http_build_query($params);
+        
         
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -30,22 +41,7 @@ class LastFmAPI {
             return null;
         }
         
-        $data = json_decode($response, true);
-        
-        return $data;
-    }
-
-    public function obtenerAlbumesSimilares($artista, $album, $limit = 5) {
-        $params = [
-            'method' => 'album.getsimilar',
-            'artist' => $artista,
-            'album' => $album,
-            'api_key' => $this->api_key,
-            'format' => 'json',
-            'limit' => $limit,
-            'autocorrect' => 1
-        ];
-        return $this->hacerPeticion($params);
+        return json_decode($response, true);
     }
 
     public function obtenerArtistasSimilares($artista, $limit = 8) {
@@ -57,7 +53,25 @@ class LastFmAPI {
             'limit' => $limit,
             'autocorrect' => 1
         ];
-        return $this->hacerPeticion($params);
+        
+        $url = $this->base_url . '?' . http_build_query($params);
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'AlbumesMusicaApp/1.0');
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        if ($response === false || $httpCode != 200) {
+            return null;
+        }
+        
+        return json_decode($response, true);
     }
 
     public function obtenerTopAlbumesPorTag($tag, $limit = 12) {
@@ -69,6 +83,24 @@ class LastFmAPI {
             'limit' => $limit,
             'autocorrect' => 1
         ];
-        return $this->hacerPeticion($params);
+        
+        $url = $this->base_url . '?' . http_build_query($params);
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'AlbumesMusicaApp/1.0');
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        if ($response === false || $httpCode != 200) {
+            return null;
+        }
+        
+        return json_decode($response, true);
     }
 }
