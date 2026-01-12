@@ -107,15 +107,12 @@ class ControladorPedido {
         foreach ($carrito as $item) {
             $id_producto_final = $item['id_producto'];
 
-            
             if (!is_numeric($item['id_producto'])) {
-                
                 $prod_db = $productoModel->obtenerPorSpotifyId($item['id_producto']);
                 
                 if ($prod_db) {
                     $id_producto_final = $prod_db['id_producto'];
                 } else {
-                    
                     try {
                         $album = $spotifyApi->obtenerAlbum($item['id_producto']);
                         if ($album && !isset($album['error'])) {
@@ -133,7 +130,6 @@ class ControladorPedido {
                             }
                         }
                     } catch (\Exception $e) {
-                        
                          $datos_minimos = [
                             'id_spotify' => $item['id_producto'],
                             'titulo' => $item['titulo'],

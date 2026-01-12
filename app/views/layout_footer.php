@@ -9,7 +9,7 @@
             </div>
             
             <div class="flex gap-6 text-gray-400">
-                <a href="#" class="hover:text-purple-400 transition-colors"><i class="ri-github-fill text-xl"></i></a>
+                <a href="https://github.com/Migs612/AlbumesMusica" class="hover:text-purple-400 transition-colors"><i class="ri-github-fill text-xl"></i></a>
             </div>
         </div>
         <div class="mt-8 text-center text-xs text-gray-600">

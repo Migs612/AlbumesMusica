@@ -16,6 +16,7 @@ class ControladorAutenticacion {
             if ($usuario) {
                 $_SESSION['usuario_id'] = $usuario['id_usuario'];
                 $_SESSION['usuario_nombre'] = $usuario['nombre'];
+                $_SESSION['usuario_correo'] = $usuario['correo'];
                 header('Location: index.php?p=home');
                 exit;
             } else {

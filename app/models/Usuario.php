@@ -4,14 +4,8 @@ namespace App\Models;
 use App\Config\BaseDeDatos;
 use PDO;
 
-class Usuario {
-    private $conexion;
+class Usuario extends Modelo {
     private $tabla = 'usuarios';
-
-    public function __construct() {
-        $base_datos = new BaseDeDatos();
-        $this->conexion = $base_datos->obtenerConexion();
-    }
 
     public function registrar($nombre, $correo, $contrasena) {
         $hash = password_hash($contrasena, PASSWORD_DEFAULT);
@@ -35,5 +29,20 @@ class Usuario {
             return $usuario;
         }
         return false;
+    }
+
+    public function obtenerTodos() {
+        $consulta = "SELECT id_usuario, nombre, correo FROM " . $this->tabla;
+        $sentencia = $this->conexion->prepare($consulta);
+        $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function obtenerPorId($id) {
+        $consulta = "SELECT id_usuario, nombre, correo FROM " . $this->tabla . " WHERE id_usuario = :id";
+        $sentencia = $this->conexion->prepare($consulta);
+        $sentencia->bindParam(':id', $id);
+        $sentencia->execute();
+        return $sentencia->fetch(PDO::FETCH_ASSOC);
     }
 }

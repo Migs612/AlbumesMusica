@@ -25,15 +25,51 @@ spl_autoload_register(function ($clase) {
     }
 });
 
+use App\Config\Env;
+
+Env::cargar(__DIR__ . '/.env');
+
 use App\Controllers\ControladorCatalogo;
 use App\Controllers\ControladorAutenticacion;
 use App\Controllers\ControladorPedido;
 use App\Controllers\ControladorFavorito;
+use App\Controllers\ControladorAdmin;
 
 
 $pagina = isset($_GET['p']) ? $_GET['p'] : 'home';
 
 switch ($pagina) {
+    case 'admin':
+    case 'admin_pedidos':
+        $controlador = new ControladorAdmin();
+        $controlador->pedidos();
+        break;
+    
+    case 'admin_usuarios':
+        $controlador = new ControladorAdmin();
+        $controlador->usuarios();
+        break;
+
+    case 'admin_devolver':
+        $controlador = new ControladorAdmin();
+        $controlador->devolverPedido();
+        break;
+
+    case 'admin_eliminar':
+        $controlador = new ControladorAdmin();
+        $controlador->eliminarPedido();
+        break;
+
+    case 'admin_ver_pedido':
+        $controlador = new ControladorAdmin();
+        $controlador->verPedido();
+        break;
+        
+    case 'admin_usuario_historial':
+        $controlador = new ControladorAdmin();
+        $controlador->verHistorialUsuario();
+        break;
+
     case 'home':
         $controlador = new ControladorCatalogo();
         $controlador->index();

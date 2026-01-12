@@ -203,8 +203,7 @@ class ControladorCatalogo
                     'imagen_url' => $datos_album['images'][0]['url'],
                     'popularidad' => $popularidad,
                     'precio' => Producto::calcularPrecioInicial($popularidad),
-                    'id_spotify' => $datos_album['id'],
-                    'id_genero' => 2
+                    'id_spotify' => $datos_album['id']
                 ];
 
                 $id_interno = $modelo->crear($nuevo_producto);

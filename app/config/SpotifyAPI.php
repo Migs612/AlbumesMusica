@@ -3,12 +3,15 @@ namespace App\Config;
 
 class SpotifyAPI
 {
-    private $cliente_id = 'dd5d5df43357426ab2e6e9cc019a71cb';
-    private $cliente_secreto = '8ff3bba444474a7d87e4a94fa2eea43b';
+    private $cliente_id;
+    private $cliente_secreto;
     private $token_acceso;
 
     public function __construct()
     {
+        $this->cliente_id = $_ENV['SPOTIFY_CLIENT_ID'] ?? '';
+        $this->cliente_secreto = $_ENV['SPOTIFY_CLIENT_SECRET'] ?? '';
+
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }

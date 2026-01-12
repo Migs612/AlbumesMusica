@@ -4,8 +4,7 @@ namespace App\Models;
 use App\Config\BaseDeDatos;
 use PDO;
 
-class Producto {
-    private $conexion;
+class Producto extends Modelo {
     private $tabla = 'productos';
 
     public $id_producto;
@@ -15,12 +14,6 @@ class Producto {
     public $popularidad;
     public $precio;
 
-    public function __construct() {
-        $base_datos = new BaseDeDatos();
-        $this->conexion = $base_datos->obtenerConexion();
-    }
-
-    
     public static function calcularPrecioInicial($puntuacion_popularidad) {
         
         $precio_base = 12.99;
@@ -54,23 +47,11 @@ class Producto {
 
     
     public function crear($datos) {
-        
         if (isset($datos['id_spotify'])) {
             $existente = $this->obtenerPorSpotifyId($datos['id_spotify']);
             if ($existente) return $existente['id_producto'];
         }
 
-        $precio = isset($datos['precio']) ? $datos['precio'] : self::calcularPrecioInicial($datos['popularidad']);
-        
-        
-        $id_genero = isset($datos['id_genero']) ? $datos['id_genero'] : 2; 
-
-        $consulta = "INSERT INTO " . $this->tabla . " 
-                    (titulo, artista, imagen_url, popularidad, precio, id_spotify, id_genero)
-                    VALUES (:titulo, :artista, :imagen, :pop, :precio, :spotify, :genero)";
-        
-        $sentencia = $this->conexion->prepare($consulta);
-        
         $precio = isset($datos['precio']) ? $datos['precio'] : self::calcularPrecioInicial($datos['popularidad']);
         
         $consulta = "INSERT INTO " . $this->tabla . " 

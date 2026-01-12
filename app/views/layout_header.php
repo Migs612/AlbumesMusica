@@ -77,6 +77,15 @@
             </a>
             
             <?php if(isset($_SESSION['usuario_id'])): ?>
+                <?php 
+                    $admin_email = $_ENV['ADMIN_EMAIL'] ?? '';
+                    if(isset($_SESSION['usuario_correo']) && $_SESSION['usuario_correo'] === $admin_email): 
+                ?>
+                    <a href="index.php?p=admin" class="text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1 font-bold">
+                        <i class="ri-admin-line"></i> Admin
+                    </a>
+                <?php endif; ?>
+
                 <a href="index.php?p=favoritos" class="hover:text-white transition-colors flex items-center gap-1">
                     <i class="ri-heart-line"></i> Favoritos
                 </a>
